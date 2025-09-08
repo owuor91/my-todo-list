@@ -67,7 +67,7 @@ fun TodoScreen(todos: List<TODO>) {
                         ) {
                             Checkbox(
                                 checked = todo.completed,
-                                onCheckedChange = {} // handle toggle here if needed
+                                onCheckedChange = {}
                             )
                             Spacer(modifier = Modifier.width(12.dp))
                             Text(todo.title)
