@@ -11,18 +11,17 @@ import kotlinx.coroutines.launch
 class ToDosViewModel : ViewModel(){
     val todosRepository = ToDosRepository()
     val posts = MutableLiveData<List<ToDos>>()
-//    val posts: LiveData<List<Post>> = _posts
+
 
     val uiState = MutableLiveData(UiState())
 
-    //    val uiState: LiveData<UIState> = _uiState
+
     val post= MutableLiveData<ToDos>()
-//    val comments= MutableLiveData<List<Comment>>()
+
 
     fun fetchToDos(){
         viewModelScope.launch {
             uiState.value = uiState.value?.copy(isLoading = true)
-//            val response = todosRepository.fetchToDos()
             val response = todosRepository.fetchPosts()
             if (response.isSuccessful){
                 uiState.value = uiState.value?.copy(isLoading = false,
@@ -50,17 +49,4 @@ class ToDosViewModel : ViewModel(){
         }
 
     }
-//    fun fetchComments(postId: Int){
-//        viewModelScope.launch {
-//            uiState.value=uiState.value?.copy(isLoading = true)
-//            val response=todosRepository.fetchPostComments(postId)
-//            if (response.isSuccessful){
-//                comments.value=response.body()
-//                uiState.value=uiState.value?.copy(isLoading = false, success = "Fetch comments Successfully")
-//            }
-//            else{
-//                uiState.value=uiState.value?.copy(isLoading = false, error = response.errorBody()?.string())
-//            }
-//        }
-//    }
 }
