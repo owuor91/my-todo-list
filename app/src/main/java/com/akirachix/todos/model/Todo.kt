@@ -1,6 +1,6 @@
 package com.akirachix.todos.model
 
-data class Post(
+data class Todo(
     val userId: Int,
     val id:Int,
     val title:String,
