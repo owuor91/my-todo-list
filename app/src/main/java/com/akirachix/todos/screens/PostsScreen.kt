@@ -25,7 +25,7 @@ fun PostsScreen() {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 10.dp)
             .background(Color.LightGray)
     ) {
         items(posts) { post ->
