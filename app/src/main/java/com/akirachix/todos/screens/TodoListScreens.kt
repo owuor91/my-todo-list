@@ -11,13 +11,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.akirachix.todos.repository.Todo
-
-
+import com.akirachix.todos.model.Todo
 
 @Composable
 fun TodoListScreen(
-    todos: List<com.akirachix.todos.repository.Todo>,
+    todos: List<Todo>,
     isLoading: Boolean,
     errorMessage: String?,
     onRefresh: () -> Unit,
@@ -35,7 +33,7 @@ fun TodoListScreen(
             color = Color.Black,
             modifier = Modifier
                 .padding(bottom = 16.dp)
-
+                .align(Alignment.CenterHorizontally)
         )
 
         Box(modifier = Modifier.fillMaxSize()) {
@@ -69,9 +67,24 @@ fun TodoListScreen(
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier.padding(16.dp)
                                 ) {
-
+                                    Checkbox(
+                                        checked = todo.completed,
+                                        onCheckedChange = null,
+                                        enabled = false,
+                                        colors = CheckboxDefaults.colors(
+                                            checkedColor = Color(0xFF800080),
+                                            uncheckedColor = Color.LightGray,
+                                            checkmarkColor = Color.White,
+                                            disabledCheckedColor = Color(0xFF800080),
+                                            disabledUncheckedColor = Color.LightGray
+                                        )
+                                    )
                                     Spacer(modifier = Modifier.width(8.dp))
-
+                                    Text(
+                                        text = todo.title,
+                                        modifier = Modifier.weight(1f),
+                                        style = MaterialTheme.typography.bodyLarge
+                                    )
                                 }
                             }
                         }

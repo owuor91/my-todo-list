@@ -5,12 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.akirachix.todos.api.ApiClient
 import com.akirachix.todos.api.ApiInterface
-import com.akirachix.todos.repository.Todo
+import com.akirachix.todos.model.Todo
+import com.akirachix.todos.repository.TodoRepo
 import kotlinx.coroutines.launch
+import android.util.Log
 
 class TodoViewModel : ViewModel() {
-    // Create the repository inside the ViewModel
-    private val repository = Todo(
+    private val repository = TodoRepo(
         ApiClient.buildApiClient(ApiInterface::class.java)
     )
 
@@ -23,11 +24,15 @@ class TodoViewModel : ViewModel() {
         errorMessage.value = null
         viewModelScope.launch {
             try {
-                todos.value = repository.fetchTodos()
+                val fetchedTodos = repository.fetchTodos()
+                todos.value = fetchedTodos
+                Log.d("TodoViewModel", "Fetched ${fetchedTodos.size} todos")
             } catch (e: Exception) {
-                errorMessage.value = e.message
+                errorMessage.value = "Failed to load todos: ${e.message}"
+                Log.e("TodoViewModel", "Error fetching todos", e)
+            } finally {
+                isLoading.value = false
             }
-            isLoading.value = false
         }
     }
 }
