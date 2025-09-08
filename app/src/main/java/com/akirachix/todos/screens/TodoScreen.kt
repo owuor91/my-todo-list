@@ -53,7 +53,6 @@ fun TodoItem(todo: Todo) {
             .fillMaxWidth()
             .padding(vertical = 4.dp),
         shape = MaterialTheme.shapes.medium,
-//        tonalElevation = 4.dp
     ) {
         Row(
             modifier = Modifier.padding(12.dp),
