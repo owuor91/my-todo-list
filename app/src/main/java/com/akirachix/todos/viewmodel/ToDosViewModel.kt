@@ -5,48 +5,26 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.akirachix.todos.model.ToDos
 import com.akirachix.todos.model.UiState
-import com.akirachix.todos.repository.ToDosRepository
+import com.akirachix.todos.repository.TodosRepository
 import kotlinx.coroutines.launch
 
-class ToDosViewModel : ViewModel(){
-    val todosRepository = ToDosRepository()
-    val posts = MutableLiveData<List<ToDos>>()
+class TodosViewModel: ViewModel() {
+    val todosRepository= TodosRepository()
+    val todos= MutableLiveData<List<ToDos>>()
+    val uiState= MutableLiveData(UiState())
 
-
-    val uiState = MutableLiveData(UiState())
-
-
-    val post= MutableLiveData<ToDos>()
-
-
-    fun fetchToDos(){
+    fun fetchTodos() {
         viewModelScope.launch {
-            uiState.value = uiState.value?.copy(isLoading = true)
-            val response = todosRepository.fetchPosts()
+            uiState.value=uiState.value?.copy(isLoading = true)
+            val response = todosRepository.fetchTodos()
             if (response.isSuccessful){
-                uiState.value = uiState.value?.copy(isLoading = false,
-                    success = "Post fetched successfully")
-                posts.value = response.body()
+                uiState.value=uiState.value?.copy(isLoading = false,
+                    success = "Todos fetched successfully")
+                todos.value=response.body()
             }else{
-                uiState.value = uiState.value?.copy(isLoading = false,
-
+                uiState.value= uiState.value?.copy(isLoading = false,
                     error = response.errorBody()?.string())
             }
         }
-    }
-    fun fetchToDosById(todosId: Int){
-        viewModelScope.launch {
-            uiState.postValue(uiState.value?.copy(isLoading = true))
-            val response = todosRepository.fetchPostById(todosId)
-            if (response.isSuccessful){
-                uiState.value=uiState.value?.copy(isLoading = false, success = "Fetch todos Successfully")
-                post.postValue(response.body())
-
-            }
-            else{
-                uiState.value=uiState.value?.copy(isLoading = false, error = response.errorBody()?.string())
-            }
-        }
-
     }
 }
