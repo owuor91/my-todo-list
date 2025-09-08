@@ -40,7 +40,7 @@ fun TodoScreen(todos: List<TODO>) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFF7F3FC))  // matching the light background color
+                    .background(Color(0xFFF7F3FC))
                     .padding(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
