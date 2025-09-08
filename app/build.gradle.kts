@@ -37,7 +37,6 @@ android {
 }
 
 dependencies {
-  
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.runtime.ktx)
   implementation(libs.androidx.activity.compose)
@@ -53,13 +52,20 @@ dependencies {
   androidTestImplementation(libs.androidx.ui.test.junit4)
   debugImplementation(libs.androidx.ui.tooling)
   debugImplementation(libs.androidx.ui.test.manifest)
-  implementation("com.squareup.retrofit2:retrofit:2.9.0")
-  implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
-  implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.3")
-  implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.3")
-  implementation("androidx.compose.runtime:runtime-livedata:1.9.0")
-  implementation("androidx.activity:activity-ktx:1.10.1")
-  implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.3")
-  implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.16")
+//  implementation(libs.retrofit)
+  implementation (libs.retrofit)
+  implementation (libs.converter.gson)
+  implementation (libs.kotlinx.coroutines.android)
+  implementation (libs.androidx.constraintlayout)
+//  implementation (libs.androidx.recyclerview.v121)
+//  implementation (libs.kotlinx.coroutines.android.v164)// Use latest if possible, e.g., 1.8.1
+//  implementation (libs.androidx.recyclerview) // Or latest, e.g., 1.3.2
+//  implementation(libs.converter.gson)
+//  implementation(libs.kotlinx.coroutines.android)
+  implementation(libs.androidx.lifecycle.viewmodel.ktx)
+  implementation(libs.androidx.lifecycle.livedata.ktx)
+  implementation(libs.androidx.runtime.livedata)
+  implementation(libs.androidx.activity.ktx)
+  implementation(libs.androidx.lifecycle.viewmodel.compose)
+  implementation(libs.logging.interceptor)
 }
