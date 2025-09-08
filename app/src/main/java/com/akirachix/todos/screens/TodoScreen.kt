@@ -44,7 +44,7 @@ fun TodoScreen(viewModel: TodoViewModel = viewModel()) {
                     CircularProgressIndicator()
                 }
             }
-            uiState.error != null -> {
+            uiState.error?.isNotBlank() == true -> {
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     Text(text = uiState.error ?: "Unknown error", color = Color.Red)
                 }
