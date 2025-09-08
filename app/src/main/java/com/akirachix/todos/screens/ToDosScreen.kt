@@ -77,7 +77,7 @@ fun ToDosScreen(toDosViewModel: ToDosViewModel = viewModel()) {
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                CircularProgressIndicator()
+
             }
         } else if (currentUiState.error != null && currentUiState.error!!.isNotEmpty()) {
             Box(
