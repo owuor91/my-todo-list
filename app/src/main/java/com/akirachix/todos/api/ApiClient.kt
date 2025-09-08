@@ -9,7 +9,6 @@ object ApiClient {
   val logging = HttpLoggingInterceptor().apply {
     level = HttpLoggingInterceptor.Level.BODY
   }
-  
   val okHttpClient = OkHttpClient.Builder()
     .addInterceptor(logging)
     .build()
@@ -24,3 +23,6 @@ object ApiClient {
     return retrofit.create(apiInterface)
   }
 }
+
+
+
