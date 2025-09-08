@@ -9,11 +9,9 @@ import com.akirachix.todos.model.Todo
 import com.akirachix.todos.repository.todoRepository
 import kotlinx.coroutines.launch
 
-
 class TodoViewModel : ViewModel() {
-    // Create the repository inside the ViewModel
     private val repository = todoRepository(
-        ApiClient.buildApiClient(ApiService:class.java)
+        ApiClient.buildApiClient(ApiService::class.java)
     )
 
     val todos = mutableStateOf<List<Todo>>(emptyList())
