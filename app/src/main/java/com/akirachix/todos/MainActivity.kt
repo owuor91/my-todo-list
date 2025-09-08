@@ -18,11 +18,10 @@ import com.akirachix.todos.ui.theme.TodosTheme
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    enableEdgeToEdge()
     setContent {
       TodosTheme {
-        Surface(modifier = Modifier.fillMaxSize().safeContentPadding()) {
-        
+        Surface(modifier = Modifier) {
+          PostsScreen(viewModel = viewModel<PostsViewModel>())
         }
       }
     }
