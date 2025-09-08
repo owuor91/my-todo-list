@@ -22,9 +22,14 @@ class MainActivity : ComponentActivity() {
     setContent {
       TodosTheme {
         Surface(modifier = Modifier.fillMaxSize().safeContentPadding()) {
-        
+          TodoScreen()
+
         }
       }
     }
   }
 }
+
+
+
+
