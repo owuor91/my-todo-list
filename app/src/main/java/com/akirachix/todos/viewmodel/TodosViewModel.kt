@@ -18,9 +18,10 @@ class TodosViewModel: ViewModel() {
 
 
 
+
     fun fetchTodos(){
         viewModelScope.launch {
-uiState.value = uiState.value?.copy(isLoading = true)
+            uiState.value = uiState.value?.copy(isLoading = true)
             val response = todosRepository.fetchTodos()
             if (response.isSuccessful) {
                 uiState.value = uiState.value?.copy(success = "fetch todos successfully", isLoading = false)

@@ -62,7 +62,7 @@ fun TodosScreen(
                     CircularProgressIndicator()
                 }
             }
-            uiState.error != null -> {
+            uiState.error?.isNotBlank()==true -> {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
@@ -121,12 +121,5 @@ fun TodoItem(todo: Todo) {
 @Preview(showBackground = true)
 @Composable
 fun TodoItemPreview() {
-    TodoItem(
-        todo = Todo(
-            userId = 1,
-            id = 1,
-            title = "delectus aut autem",
-            completed = false
-        )
-    )
+    TodosScreen()
 }

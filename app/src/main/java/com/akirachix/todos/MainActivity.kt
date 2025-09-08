@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeContentPadding
 
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 
 import androidx.compose.ui.Modifier
+import com.akirachix.todos.screens.TodoItem
 
 import com.akirachix.todos.screens.TodosScreen
 import com.akirachix.todos.ui.theme.TodosTheme
@@ -21,12 +23,10 @@ class MainActivity : ComponentActivity() {
     enableEdgeToEdge()
     setContent {
       TodosTheme {
-        Surface(modifier = Modifier.fillMaxSize().safeContentPadding()) {
-        TodosScreen()
+   TodosScreen()
         }
       }
     }
   }
-}
 
 
