@@ -5,3 +5,4 @@ data class UiState(
   val success: String? = "",
   val error: String? = ""
 )
+
