@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.kotlin.android)
@@ -46,6 +48,10 @@ dependencies {
   implementation(libs.androidx.ui.graphics)
   implementation(libs.androidx.ui.tooling.preview)
   implementation(libs.androidx.material3)
+  implementation(libs.androidx.constraintlayout)
+  implementation(libs.androidx.recyclerview)
+  implementation(libs.androidx.appcompat)
+  implementation(libs.filament.android)
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
@@ -62,4 +68,7 @@ dependencies {
   implementation("androidx.activity:activity-ktx:1.10.1")
   implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.3")
   implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.16")
+  implementation("androidx.cardview:cardview:1.0.0")
+  implementation("androidx.core:core-ktx:1.16.0")
+  implementation("androidx.appcompat:appcompat:1.7.1")
 }
