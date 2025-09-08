@@ -13,17 +13,25 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.akirachix.todos.model.UiState
+import com.akirachix.todos.screens.TodoListScreen
 import com.akirachix.todos.ui.theme.TodosTheme
+import com.akirachix.todos.viewmodel.TodoListViewModel
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    enableEdgeToEdge()
     setContent {
       TodosTheme {
-        Surface(modifier = Modifier.fillMaxSize().safeContentPadding()) {
-        
-        }
+        val viewModel: TodoListViewModel = viewModel()
+        val uiState by viewModel.uiState.observeAsState(UiState())
+        TodoListScreen(
+          uiState = uiState,
+          onTodoCheckedChange = { todo, isChecked ->
+            viewModel.updateTodoChecked(todo, isChecked)
+          }
+        )
       }
     }
   }
