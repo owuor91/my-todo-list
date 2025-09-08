@@ -7,17 +7,17 @@ plugins {
 android {
   namespace = "com.akirachix.todos"
   compileSdk = 35
-  
+
   defaultConfig {
     applicationId = "com.akirachix.todos"
     minSdk = 24
     targetSdk = 35
     versionCode = 1
     versionName = "1.0"
-    
+
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
-  
+
   buildTypes {
     release {
       isMinifyEnabled = false
@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-  
+
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.runtime.ktx)
   implementation(libs.androidx.activity.compose)
