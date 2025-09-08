@@ -25,7 +25,6 @@ class MainActivity : ComponentActivity() {
           modifier = Modifier
             .fillMaxSize()
             .safeContentPadding(),
-            color = Color(0xFFD3D3D3)
         ) {
           val todoViewModel: TodoViewModel = viewModel()
 
