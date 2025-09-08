@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.akirachix.todos.api.RetrofitInstance
+import com.akirachix.todos.api.ApiInterface
 import com.akirachix.todos.model.TODO
 import kotlinx.coroutines.launch
 
@@ -19,7 +19,7 @@ class TodoViewModel: ViewModel() {
     private fun fetchTodos() {
         viewModelScope.launch {
             try {
-                _todos.value = RetrofitInstance.api.getTodos()
+                _todos.value = ApiInterface.api.getTodos()
             } catch (e: Exception) {
 
             }
