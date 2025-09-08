@@ -7,37 +7,41 @@ plugins {
 android {
   namespace = "com.akirachix.todos"
   compileSdk = 35
-  
+
   defaultConfig {
     applicationId = "com.akirachix.todos"
     minSdk = 24
     targetSdk = 35
     versionCode = 1
     versionName = "1.0"
-    
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
-  
+
   buildTypes {
     release {
       isMinifyEnabled = false
-      proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+      proguardFiles(
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro"
+      )
     }
   }
+
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
   }
+
   kotlinOptions {
-    jvmTarget = "11"
+    jvmTarget = "17"
   }
+
   buildFeatures {
     compose = true
   }
 }
-
 dependencies {
-  
+
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.runtime.ktx)
   implementation(libs.androidx.activity.compose)
@@ -63,3 +67,10 @@ dependencies {
   implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.3")
   implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.16")
 }
+
+
+
+
+
+
+
