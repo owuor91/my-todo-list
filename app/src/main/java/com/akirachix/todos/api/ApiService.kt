@@ -11,8 +11,6 @@ interface ApiService {
     @GET("/todos/{id}")
     suspend fun getTodoById(@Path("id") id: Int): Todo
 
-
-
 }
 
 
