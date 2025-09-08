@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material3.* // Keep this
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,11 +22,9 @@ import com.akirachix.todos.ui.theme.TodosTheme
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
-
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.runtime.getValue // Added this import
-import androidx.compose.runtime.setValue // Added this import
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,7 +101,7 @@ fun loadTodos(onResult: (UiState) -> Unit) {
   })
 }
 
-@OptIn(ExperimentalMaterial3Api::class) // Also add here for the preview if needed
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
 @Composable
 fun TodoScreenPreview() {
