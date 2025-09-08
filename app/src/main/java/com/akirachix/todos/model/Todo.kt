@@ -1,8 +1,8 @@
 package com.akirachix.todos.model
 
-data class ToDo(
-    val userId: Int,
+data class Todo(
     val id: Int,
+    val userId: Int,
     val title: String,
     val completed: Boolean
 )
