@@ -22,5 +22,9 @@ object ApiClient {
   
   fun <T> buildApiClient(apiInterface: Class<T>): T{
     return retrofit.create(apiInterface)
+
+  }
+  val retrofitService: ApiInterface by lazy {
+    buildApiClient(ApiInterface::class.java)
   }
 }
