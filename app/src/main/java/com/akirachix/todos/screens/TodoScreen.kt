@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -25,8 +24,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,13 +31,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.akirachix.todos.model.Post
+import com.akirachix.todos.model.Todo
 import com.akirachix.todos.model.UiState
-
+import com.akirachix.todos.viewmodel.TodoViewModel
 
 @Composable
-fun ToDoScreen(viewModel: PostViewModel = viewModel()) {
-    val posts by viewModel.posts.observeAsState()
+fun ToDoScreen(viewModel: TodoViewModel = viewModel()) {
+    val todo by viewModel.posts.observeAsState()
     val uiState by viewModel.uiState.observeAsState(UiState())
     LaunchedEffect(Unit) {
         viewModel.fetchPosts()
@@ -78,11 +75,11 @@ fun ToDoScreen(viewModel: PostViewModel = viewModel()) {
                 }
 
                 uiState.success != null -> {
-                    if (posts != null) {
+                    if (todo != null) {
                         LazyColumn(
                             verticalArrangement = Arrangement.spacedBy(8.dp),
                             modifier = Modifier.padding(8.dp)
-                        ) { items(posts!!) { post -> TodoItem(post) } }
+                        ) { items(todo!!) { post -> TodoItem(post) } }
                     }
                 }
 
@@ -99,7 +96,7 @@ fun ToDoScreen(viewModel: PostViewModel = viewModel()) {
     }
 }
 @Composable
-fun TodoList(todos: List<Post>) {
+fun TodoList(todos: List<Todo>) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -111,7 +108,7 @@ fun TodoList(todos: List<Post>) {
     }
 }
 @Composable
-fun TodoItem(todo: Post) {
+fun TodoItem(todo: Todo) {
     Row(
         modifier = Modifier
             .fillMaxWidth()

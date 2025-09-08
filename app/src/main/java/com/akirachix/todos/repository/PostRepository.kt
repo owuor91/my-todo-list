@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 class PostRepository {
-    val retrofit = ApiClient.apiInterface(ApiInterface::class.java)
+    val retrofit = ApiClient.buildApiClient(ApiInterface::class.java)
     suspend fun fetchPosts(): Response<List<Todo>> {
         return  withContext(Dispatchers.IO){
             retrofit.fetchPosts()
@@ -20,3 +20,5 @@ class PostRepository {
         }
     }
 }
+
+
