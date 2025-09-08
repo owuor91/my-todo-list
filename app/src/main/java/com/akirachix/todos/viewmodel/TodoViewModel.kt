@@ -10,7 +10,6 @@ import com.akirachix.todos.repository.TodoRepository
 import kotlinx.coroutines.launch
 
 class TodoViewModel : ViewModel() {
-    // Create the repository inside the ViewModel
     private val repository = TodoRepository(
         ApiClient.buildApiClient(ApiInterface::class.java)
     )
