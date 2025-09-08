@@ -1,6 +1,9 @@
 package com.akirachix.todos.ui_file
 
 import android.R
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,6 +26,9 @@ import com.akirachix.todos.model.Todo
 
 @Composable
 fun TodoItem(todo: Todo){
+    Column(modifier = Modifier.fillMaxWidth() .padding(0.dp)
+        .background(Color(0xFFCCC2DC)), horizontalAlignment = Alignment.Start){
+
     Card(
         modifier = Modifier
             .fillMaxWidth(),
@@ -39,7 +45,7 @@ fun TodoItem(todo: Todo){
                 onCheckedChange = null,
                 colors = CheckboxDefaults.colors(
                     checkedColor = Color(0xFF6A1B9A),
-                    uncheckedColor = Color.White,
+                    uncheckedColor = Color.Gray,
                     checkmarkColor = Color(0xFF6650a4),
 
 
@@ -52,4 +58,4 @@ fun TodoItem(todo: Todo){
             )
         }
     }
-}
+}}
