@@ -7,10 +7,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-class TodoRepository {
 
-        suspend fun getPosts(): List<Todo> {
-            return ApiClient.apiInterface.getPosts()
+class TodosRepository {
+    val retrofit = ApiClient.buildApiClient (ApiInterface::class.java)
+
+    suspend fun fetchTodos(): Response<List<Todo>> {
+        return withContext(Dispatchers.IO){
+            retrofit.fetchTodos()
         }
+    }
 
 }
