@@ -15,7 +15,7 @@ object ApiClient {
     .build()
   
   val retrofit = Retrofit.Builder()
-    .baseUrl("https://jsonplaceholder.typicode.com")
+    .baseUrl("https://jsonplaceholder.typicode.com/")
     .addConverterFactory(GsonConverterFactory.create())
     .client(okHttpClient)
     .build()

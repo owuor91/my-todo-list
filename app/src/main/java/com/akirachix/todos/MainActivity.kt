@@ -11,9 +11,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.akirachix.todos.screens.TodosScreen
 import com.akirachix.todos.ui.theme.TodosTheme
+import com.akirachix.todos.viewmodel.TodosViewModel
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +24,11 @@ class MainActivity : ComponentActivity() {
     enableEdgeToEdge()
     setContent {
       TodosTheme {
-        Surface(modifier = Modifier.fillMaxSize().safeContentPadding()) {
-        
+        Surface(
+          modifier = Modifier.fillMaxSize().safeContentPadding()
+        ) {
+          val viewModel = remember { TodosViewModel() }
+          TodosScreen(viewModel = viewModel)
         }
       }
     }
