@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -12,12 +13,17 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -40,7 +46,7 @@ fun TodoListScreen(viewModel: TodosViewModel = viewModel()) {
 
     Box(modifier = Modifier
         .fillMaxSize()
-        .background(Color(0xFF778899))) {
+        .background(Color(0xFFD3D3D3))) {
         when {
             uiState.isLoading -> {
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -83,13 +89,28 @@ fun TodoCard(todo: Todo) {
                 .fillMaxWidth()
                 .padding(horizontal = 12.dp, vertical = 10.dp)
         ) {
-            Text(
-                text = if (todo.isCompleted) "✔ ${todo.title}" else "☐ ${todo.title}",
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Normal,
-                color = if (todo.isCompleted) Color(0xFF800080) else Color(0xFF333333)
-            )
+            var isChecked by remember { mutableStateOf(todo.isCompleted) }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Checkbox(
+                    checked = isChecked,
+                    onCheckedChange = { isChecked = it },
+                    colors = CheckboxDefaults.colors(
+                        checkedColor = Color(0xFF800080),
+                        uncheckedColor = Color(0xFF333333),
+                        checkmarkColor = Color.White
+                    )
+                )
+                Text(
+                    text = todo.title,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Normal,
+                    color = if (isChecked) Color(0xFF800080) else Color(0xFF333333)
+                )
+            }
         }
-
     }
 }
