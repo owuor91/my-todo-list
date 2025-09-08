@@ -73,7 +73,6 @@ fun ToDosScreen(toDosViewModel: ToDosViewModel = viewModel()) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         if (currentUiState.isLoading) {
-            // Show Loading
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
@@ -109,7 +108,6 @@ fun ToDosScreen(toDosViewModel: ToDosViewModel = viewModel()) {
                     modifier = Modifier.fillMaxSize().padding(vertical = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
-                    // Not using key here for extreme simplicity, but keys are good for performance.
                     items(items = todosList!!) { todo ->
                         TodoItemCard(todo = todo)
                     }
