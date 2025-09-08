@@ -1,7 +1,7 @@
 package com.akirachix.todos.model
 
 data class UiState(
+  val posts: List<Todo> = emptyList(),
   val isLoading: Boolean = false,
-  val success: String? = "",
-  val error: String? = ""
+  val error: String? = null
 )
