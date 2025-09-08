@@ -1,0 +1,33 @@
+package com.akirachix.todos.viewModel
+
+import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.akirachix.todos.api.ApiClient
+import com.akirachix.todos.api.ApiInterface
+import com.akirachix.todos.repository.Todo
+import kotlinx.coroutines.launch
+
+class TodoViewModel : ViewModel() {
+    // Create the repository inside the ViewModel
+    private val repository = Todo(
+        ApiClient.buildApiClient(ApiInterface::class.java)
+    )
+
+    val todos = mutableStateOf<List<Todo>>(emptyList())
+    val isLoading = mutableStateOf(false)
+    val errorMessage = mutableStateOf<String?>(null)
+
+    fun fetchTodos() {
+        isLoading.value = true
+        errorMessage.value = null
+        viewModelScope.launch {
+            try {
+                todos.value = repository.fetchTodos()
+            } catch (e: Exception) {
+                errorMessage.value = e.message
+            }
+            isLoading.value = false
+        }
+    }
+}
